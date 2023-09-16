@@ -63,13 +63,13 @@ ALL_EPS := $(patsubst $(SCHEMATIC_DIR)/%.tex,$(EPS_DIR)/%.eps,$(ALL_TEX)) \
 	$(patsubst $(SCHEMATIC_DIR)/%.py,$(EPS_DIR)/%.eps,$(ALL_SCHPY))
 
 .PHONY: default
-default: cese mesh projection
+default: cese mesh projection fdtd
 
 .PHONY: all
 all: default
 
 .PHONY: ho
-ho: cese_ho mesh_ho projection_ho
+ho: cese_ho mesh_ho projection_ho fdtd_ho
 
 .PHONY: eps
 eps: $(ALL_EPS)
@@ -129,6 +129,15 @@ cese_ho: cese.pdf
 	mkdir -p $(HANDOVER_DIR)
 	cp -f $< $(HANDOVER_FN)
 
+.PHONY: fdtd
+fdtd: fdtd.pdf
+
+.PHONY: fdtd_ho
+fdtd_ho: fdtd.pdf
+	@echo "Generating today's PDF: $(HANDOVER_FN)"
+	mkdir -p $(HANDOVER_DIR)
+	cp -f $< $(HANDOVER_FN)
+
 .PHONY: mesh
 mesh: ustmesh.pdf
 
@@ -150,7 +159,7 @@ projection_ho: projection.pdf
 
 .PHONY: tex
 tex: 
-	chktex cese.tex projection.tex ustmesh.tex
+	chktex cese.tex projection.tex ustmesh.tex fdtd.tex
 
 .PHONY: lint
 lint: tex
