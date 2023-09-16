@@ -61,17 +61,29 @@ Electrodynamics is widely applied in many aspects of human life including radio 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 \chapter{The Maxwell Equations}
-\label{c:cese}
+\label{c:maxwell}
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The conservation element and solution element (CESE) method solves conservation
-laws, which can be written in the following form in one-dimensional space
+To model the propagation of electromagnetic waves, one needs to use Faraday's law and Ampere's law in Maxwell's equations.
 \begin{eqnarray}
 	\nabla \times {\mathbf{E}(\mathbf{x},t)} &=& -\frac{\partial \mathbf{B}(\mathbf{x},t)}{\partial t} \\
 	\nabla \times {\mathbf{H}(\mathbf{x},t)} &=& \mathbf{J}(\mathbf{x},t) +\frac{\partial \mathbf{D}(\mathbf{x},t)}{\partial t}
+	\label{e:maxwell:maxwell}
 \end{eqnarray}
-\label{e:fdtd:maxwell}
+
+
+Consider inhomogeneous and isotropic materials, we have 
+\begin{eqnarray}
+	{\mathbf{D}(\mathbf{x},t)}&=&{\epsilon(\mathbf{x})}{\mathbf{E}(\mathbf{x},t)} \\
+	{\mathbf{B}(\mathbf{x},t)}&=&{\mu(\mathbf{x})}{\mathbf{H}(\mathbf{x},t)}
+	\label{e:maxwell:D_E_H_B}.
+\end{eqnarray}
+
+In Equation (\ref{e:maxwell:D_E_H_B}), $\mathbf{D}(\mathbf{x},t)$ is the electric displacement field; $\mathbf{B}(\mathbf{x},t)$ is the magnetic field; $\mathbf{E}(\mathbf{x},t)$ is the electric field; $\mathbf{H}(\mathbf{x},t)$ is magnetizing field; $\epsilon(\mathbf{x}$ is electric permittivity ; $\mu(\mathbf{x})$ is magnetic permeability.
+
+
+
 $u$ is the dependent solution variable and $f(u)$ is a function.  $(x, t)$ is
 the independent variables defining the two axes of two-dimensional Euclidean
 space.  Let $\mathbf{h} \defeq (f(u),u)$ and rewrite Eq.~(\ref{e:cese:1d_pde})
