@@ -10,13 +10,15 @@ jobs:
 
   build_pdf:
 
+    if: ${{ github.event_name != 'schedule' || (github.event_name == 'schedule' && vars.MMNOTE_NIGHTLY == 'enable') }}
+
     name: build_pdf
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
 
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 1
 
@@ -36,7 +38,7 @@ jobs:
         make lint
 
     - name: Archive PDF
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: archive PDF
         path: |
