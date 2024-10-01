@@ -2,8 +2,8 @@
 .idea/
 .hg/
 .ipynb_checkpoints/
+.texpadtmp/
 tmp/
-
 /log/
 /handover
 /setup.mk
